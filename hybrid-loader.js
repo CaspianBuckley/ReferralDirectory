@@ -1,5 +1,5 @@
 /* Surrey Referral Pathways — hybrid-loader.js (multi clinic-type pills) */
-const DATA_URL = "https://raw.githubusercontent.com/CaspianBuckley-oss/surrey-referrals-data/refs/heads/main/master_normalised.json";
+const DATA_URL = "https://raw.githubusercontent.com/CaspianBuckley-oss/ReferralDirectory/refs/heads/main/master_normalised.json";
 const ERS_MULTI_LOOKUP_URL = 'ers_multi_lookup.json';
 
 let DATA=null, INDEX=[], ERS_MULTI={};
