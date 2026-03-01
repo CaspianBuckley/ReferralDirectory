@@ -166,8 +166,9 @@
   }
 
   /* ─────────────────────── LAYOUT ─────────────────────── */
-  .view { display: none; }
-  .view.active { display: block; }
+  /* JS manages display directly on panels/views - .active class used for styling only */
+  .view { }
+  .view.active { }
   .wrap { max-width: 1160px; margin: 0 auto; padding: 28px 22px 70px; }
 
   /* ─────────────────────── SEARCH HEADER ─────────────────────── */
@@ -752,5 +753,6 @@
   </main>
 
   <script src='hybrid-loader.js'></script>
+  <!-- Data source: master_normalised_v2.json via GitHub raw URL in hybrid-loader.js -->
 </body>
 </html>
