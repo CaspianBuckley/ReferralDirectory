@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang='en'>
+<html lang="en">
 <head>
-  <meta charset='utf-8'/>
-  <meta name='viewport' content='width=device-width, initial-scale=1'/>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Surrey Referral Pathways</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,700;1,9..144,300&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,700;1,9..144,300&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
   :root {
     --bg:        #F2F5F8;
@@ -19,13 +19,11 @@
     --ink-3:     #7A92A6;
     --ink-4:     #B0C4D4;
 
-    /* Brand — deep teal-navy */
-    --brand:     #0B4F6C;
-    --brand-mid: #1270A0;
+    --brand:     #003B5C;
+    --brand-mid: #0072B8;
     --brand-lt:  #E0EEF6;
     --brand-xlt: #F0F6FB;
 
-    /* Accents */
     --red:       #C0182E;
     --red-lt:    #FEF0F2;
     --green:     #0A7048;
@@ -37,22 +35,19 @@
 
     --r-sm: 8px;
     --r:    12px;
-    --r-lg: 18px;
-    --r-xl: 24px;
+    --r-lg: 16px;
 
-    --sh0: 0 1px 3px rgba(10,25,45,.06), 0 1px 2px rgba(10,25,45,.04);
-    --sh1: 0 4px 16px rgba(10,25,45,.08), 0 1px 4px rgba(10,25,45,.05);
-    --sh2: 0 12px 40px rgba(10,25,45,.12), 0 4px 12px rgba(10,25,45,.06);
-    --sh-brand: 0 4px 20px rgba(11,79,108,.22);
+    --sh0: 0 1px 3px rgba(10,25,45,.05);
+    --sh1: 0 4px 16px rgba(10,25,45,.07), 0 1px 3px rgba(10,25,45,.04);
+    --sh2: 0 12px 40px rgba(10,25,45,.1), 0 4px 12px rgba(10,25,45,.05);
 
-    --hdr: 58px;
+    --hdr: 56px;
     --ff-display: 'Fraunces', Georgia, serif;
     --ff-body: 'DM Sans', system-ui, sans-serif;
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
 
   body {
     font-family: var(--ff-body);
@@ -63,696 +58,1071 @@
     min-height: 100vh;
   }
 
-  /* ─────────────────────── HEADER ─────────────────────── */
+  /* ═══ HEADER ═══ */
   .site-header {
     background: var(--brand);
     height: var(--hdr);
     display: flex;
     align-items: center;
     gap: 16px;
-    padding: 0 28px;
+    padding: 0 24px;
     position: sticky;
     top: 0;
     z-index: 100;
-    box-shadow: 0 1px 0 rgba(255,255,255,.06), var(--sh-brand);
   }
-
-  /* subtle diagonal stripe texture */
-  .site-header::before {
+  .site-header::after {
     content: '';
     position: absolute;
-    inset: 0;
-    background-image: repeating-linear-gradient(
-      -55deg,
-      transparent,
-      transparent 18px,
-      rgba(255,255,255,.025) 18px,
-      rgba(255,255,255,.025) 19px
-    );
-    pointer-events: none;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #0072B8, #00A3E0, #0072B8);
+    opacity: .6;
   }
 
   .site-logo {
-    display: flex;
-    align-items: center;
-    gap: 11px;
-    position: relative;
-    z-index: 1;
-    text-decoration: none;
+    display: flex; align-items: center; gap: 10px;
+    text-decoration: none; position: relative; z-index: 1;
   }
   .logo-mark {
-    width: 32px; height: 32px;
-    background: rgba(255,255,255,.15);
-    border: 1px solid rgba(255,255,255,.22);
-    border-radius: 8px;
-    display: grid;
-    place-items: center;
-    font-size: .72rem;
-    font-weight: 700;
-    letter-spacing: .04em;
-    color: rgba(255,255,255,.92);
-    flex-shrink: 0;
+    width: 30px; height: 30px;
+    background: rgba(255,255,255,.12);
+    border: 1px solid rgba(255,255,255,.2);
+    border-radius: 7px;
+    display: grid; place-items: center;
+    font-size: .65rem; font-weight: 700; letter-spacing: .04em;
+    color: rgba(255,255,255,.85); flex-shrink: 0;
   }
   .logo-text {
     font-family: var(--ff-display);
-    font-weight: 600;
-    font-size: 1.05rem;
-    color: #fff;
-    letter-spacing: -.01em;
-    line-height: 1.1;
+    font-weight: 600; font-size: 1rem;
+    color: #fff; letter-spacing: -.01em; line-height: 1.1;
   }
   .logo-sub {
     font-family: var(--ff-body);
-    font-size: .66rem;
-    font-weight: 500;
-    color: rgba(255,255,255,.5);
-    letter-spacing: .04em;
-    text-transform: uppercase;
-    margin-top: 1px;
+    font-size: .6rem; font-weight: 600;
+    color: rgba(255,255,255,.45);
+    letter-spacing: .06em; text-transform: uppercase; margin-top: 1px;
   }
 
+  .header-right { margin-left: auto; display: flex; align-items: center; gap: 8px; position: relative; z-index:1; }
+
   .tabs {
-    margin-left: auto;
-    display: flex;
-    gap: 2px;
-    background: rgba(0,0,0,.22);
-    padding: 3px;
-    border-radius: 10px;
-    position: relative;
-    z-index: 1;
+    display: flex; gap: 2px;
+    background: rgba(0,0,0,.2);
+    padding: 3px; border-radius: 9px;
   }
   .tab-btn {
     background: transparent;
-    color: rgba(255,255,255,.6);
-    border: none;
-    border-radius: 8px;
-    padding: 6px 18px;
-    font-family: var(--ff-body);
-    font-weight: 600;
-    font-size: .8rem;
-    cursor: pointer;
-    transition: all .18s;
-    white-space: nowrap;
-    letter-spacing: .01em;
+    color: rgba(255,255,255,.55);
+    border: none; border-radius: 7px;
+    padding: 5px 16px;
+    font-family: var(--ff-body); font-weight: 600; font-size: .78rem;
+    cursor: pointer; transition: all .15s; white-space: nowrap;
   }
   .tab-btn[aria-selected='true'] {
-    background: #fff;
-    color: var(--brand);
-    box-shadow: var(--sh0);
+    background: #fff; color: var(--brand); box-shadow: var(--sh0);
   }
   .tab-btn:hover:not([aria-selected='true']) {
-    color: #fff;
-    background: rgba(255,255,255,.1);
+    color: #fff; background: rgba(255,255,255,.1);
   }
 
-  /* ─────────────────────── LAYOUT ─────────────────────── */
-  /* JS manages display directly on panels/views - .active class used for styling only */
-  .view { }
-  .view.active { }
-  .wrap { max-width: 1160px; margin: 0 auto; padding: 28px 22px 70px; }
+  .stat-pill {
+    font-size: .65rem; font-weight: 700;
+    color: rgba(255,255,255,.5);
+    background: rgba(255,255,255,.08);
+    border: 1px solid rgba(255,255,255,.12);
+    padding: 3px 10px; border-radius: 20px;
+    white-space: nowrap;
+  }
 
-  /* ─────────────────────── SEARCH HEADER ─────────────────────── */
+  /* ═══ LAYOUT ═══ */
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 24px 20px 60px; }
+
+  /* ═══ SEARCH BAR ═══ */
   .search-header {
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: var(--r-lg);
-    padding: 18px 20px 16px;
-    margin-bottom: 26px;
+    padding: 16px 18px 14px;
+    margin-bottom: 24px;
     box-shadow: var(--sh1);
   }
-
   .search-row {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+    display: flex; align-items: center; gap: 10px;
     background: var(--bg);
     border: 1.5px solid var(--border);
     border-radius: var(--r);
-    padding: 10px 15px;
-    transition: all .18s;
-    margin-bottom: 14px;
+    padding: 9px 14px; transition: all .15s;
+    margin-bottom: 12px;
   }
   .search-row:focus-within {
     border-color: var(--brand-mid);
     background: #fff;
-    box-shadow: 0 0 0 3px rgba(18,112,160,.1);
+    box-shadow: 0 0 0 3px rgba(0,114,184,.08);
   }
-  .search-icon {
-    flex-shrink: 0;
-    color: var(--ink-3);
-    display: flex;
+  .search-icon { flex-shrink: 0; color: var(--ink-3); display: flex; }
+  .search-input {
+    flex: 1; border: none; outline: none;
+    font-size: .9rem; font-family: var(--ff-body);
+    background: transparent; color: var(--ink);
   }
-  #global-search, #usc-search {
-    flex: 1;
-    border: none;
-    outline: none;
-    font-size: .93rem;
-    font-family: var(--ff-body);
-    background: transparent;
-    color: var(--ink);
+  .search-input::placeholder { color: var(--ink-4); }
+  .search-clear {
+    display: none; border: none; background: none; cursor: pointer;
+    color: var(--ink-3); padding: 2px; border-radius: 4px;
   }
-  #global-search::placeholder, #usc-search::placeholder { color: var(--ink-3); }
+  .search-clear:hover { color: var(--ink); }
+  .search-clear.visible { display: flex; }
 
-  /* ─────────────────────── FILTER ROW ─────────────────────── */
-  .filter-row {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    flex-wrap: wrap;
-  }
-  .filter-label {
-    font-size: .68rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: .08em;
-    color: var(--ink-3);
-    white-space: nowrap;
-    margin-right: 1px;
-    flex-shrink: 0;
-  }
-  .chip {
-    padding: 4px 12px;
-    border-radius: 20px;
-    border: 1.5px solid var(--border);
-    background: var(--surface);
-    font-family: var(--ff-body);
-    font-weight: 600;
-    font-size: .76rem;
-    cursor: pointer;
-    color: var(--ink-2);
-    transition: all .15s;
-    white-space: nowrap;
-    line-height: 1.5;
-  }
-  .chip:hover { border-color: var(--brand-mid); background: var(--brand-xlt); color: var(--brand); }
-  .chip.active { background: var(--brand); border-color: var(--brand); color: #fff; }
-
-  .filter-divider { width: 1px; height: 18px; background: var(--border); margin: 0 4px; flex-shrink: 0; }
-
-  .age-slider-wrap {
-    display: flex; align-items: center; gap: 8px; margin-left: auto;
-  }
-  #age-slider { width: 110px; accent-color: var(--brand); cursor: pointer; }
-  #age-slider-value { font-size: .76rem; font-weight: 700; color: var(--brand); min-width: 28px; }
-
-  /* ─────────────────────── SEARCH RESULTS DROPDOWN ─────────────────────── */
-  #search-results, #usc-search-results {
+  /* ═══ SEARCH DROPDOWN ═══ */
+  .search-results {
     border: 1px solid var(--border);
     border-radius: var(--r-sm);
     background: var(--surface);
     box-shadow: var(--sh2);
-    overflow: hidden;
-    margin-top: 6px;
+    overflow: hidden; margin-top: 4px;
+    max-height: 380px; overflow-y: auto;
   }
-  #search-results:empty, #usc-search-results:empty { display: none; }
+  .search-results:empty { display: none; }
   .search-hit {
-    padding: 10px 15px;
+    padding: 10px 14px;
     border-bottom: 1px solid var(--border-lt);
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-    transition: background .12s;
+    cursor: pointer; display: flex; flex-direction: column; gap: 2px;
+    transition: background .1s;
   }
   .search-hit:last-child { border-bottom: none; }
   .search-hit:hover { background: var(--brand-xlt); }
-  .search-hit-title { font-weight: 600; font-size: .87rem; color: var(--ink); }
-  .search-hit-path { font-size: .74rem; color: var(--ink-3); }
+  .search-hit-title { font-weight: 600; font-size: .85rem; color: var(--ink); }
+  .search-hit-path { font-size: .72rem; color: var(--ink-3); }
+  .search-hit-badges { display: flex; gap: 4px; margin-top: 2px; }
 
-  /* ─────────────────────── SECTION LABEL ─────────────────────── */
+  /* ═══ FILTER ROW ═══ */
+  .filter-row {
+    display: flex; align-items: center; gap: 5px; flex-wrap: wrap;
+  }
+  .filter-label {
+    font-size: .64rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: .08em; color: var(--ink-3);
+    white-space: nowrap; margin-right: 1px; flex-shrink: 0;
+  }
+  .chip {
+    padding: 3px 11px; border-radius: 20px;
+    border: 1.5px solid var(--border); background: var(--surface);
+    font-family: var(--ff-body); font-weight: 600; font-size: .72rem;
+    cursor: pointer; color: var(--ink-2); transition: all .12s;
+    white-space: nowrap; line-height: 1.5; user-select: none;
+  }
+  .chip:hover { border-color: var(--brand-mid); background: var(--brand-xlt); color: var(--brand); }
+  .chip.active { background: var(--brand); border-color: var(--brand); color: #fff; }
+
+  .filter-divider { width: 1px; height: 16px; background: var(--border); margin: 0 4px; flex-shrink: 0; }
+
+  .age-group { display: flex; align-items: center; gap: 5px; }
+  .age-slider-wrap {
+    display: flex; align-items: center; gap: 6px; margin-left: 4px;
+  }
+  #age-slider { width: 90px; accent-color: var(--brand); cursor: pointer; }
+  .age-val { font-size: .72rem; font-weight: 700; color: var(--brand); min-width: 26px; }
+
+  /* ═══ SECTION LABEL ═══ */
   .section-label {
-    font-family: var(--ff-body);
-    font-size: .67rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: .1em;
-    color: var(--ink-3);
-    margin-bottom: 14px;
+    font-size: .64rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: .1em; color: var(--ink-3); margin-bottom: 12px;
   }
 
-  /* ─────────────────────── CATEGORY GRID ─────────────────────── */
+  /* ═══ CATEGORY GRID ═══ */
   .category-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(188px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
     gap: 10px;
   }
-
   .category-card {
     background: var(--surface);
     border: 1.5px solid var(--border);
     border-radius: var(--r);
-    padding: 20px 16px 16px;
+    padding: 16px 14px 14px;
     box-shadow: var(--sh0);
     cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    transition: border-color .18s, box-shadow .18s, transform .18s;
-    position: relative;
-    overflow: hidden;
+    display: flex; flex-direction: column; gap: 8px;
+    transition: border-color .15s, box-shadow .15s, transform .15s;
+    position: relative; overflow: hidden;
   }
-  /* coloured left accent bar */
   .category-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; bottom: 0;
-    width: 3px;
+    content: ''; position: absolute;
+    top: 0; left: 0; bottom: 0; width: 3px;
     background: var(--cat-color, var(--brand));
-    border-radius: 2px 0 0 2px;
-    opacity: 0;
-    transition: opacity .18s;
+    opacity: 0; transition: opacity .15s;
   }
   .category-card:hover {
-    border-color: var(--brand-mid);
-    box-shadow: var(--sh1);
-    transform: translateY(-2px);
+    border-color: var(--brand-mid); box-shadow: var(--sh1);
+    transform: translateY(-1px);
   }
   .category-card:hover::before { opacity: 1; }
+  .category-card.active { border-color: var(--brand); box-shadow: var(--sh1); }
+  .category-card.active::before { opacity: 1; }
 
-  .cat-emoji { font-size: 1.65rem; line-height: 1; display: block; }
+  .cat-emoji { font-size: 1.5rem; line-height: 1; }
   .cat-title {
-    font-family: var(--ff-display);
-    font-weight: 600;
-    font-size: .95rem;
-    line-height: 1.25;
-    color: var(--ink);
+    font-family: var(--ff-display); font-weight: 600;
+    font-size: .88rem; line-height: 1.25; color: var(--ink);
   }
-  .cat-sub {
-    font-size: .72rem;
-    color: var(--ink-3);
-    font-weight: 500;
-    margin-top: -4px;
+  .cat-count {
+    font-size: .68rem; color: var(--ink-3); font-weight: 500; margin-top: -4px;
   }
 
-  /* ─────────────────────── VIEW HEADER ─────────────────────── */
-  #category-view, #results-view { animation: fadeUp .22s ease; }
+  /* ═══ VIEW TRANSITIONS ═══ */
+  .view-anim { animation: fadeUp .2s ease; }
   @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(10px); }
+    from { opacity: 0; transform: translateY(8px); }
     to   { opacity: 1; transform: none; }
   }
 
+  /* ═══ VIEW HEADER ═══ */
   .view-header {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    margin-bottom: 24px;
-    padding-bottom: 20px;
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 22px; padding-bottom: 18px;
     border-bottom: 1px solid var(--border);
   }
   .back-btn {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    padding: 7px 14px;
-    border-radius: var(--r-sm);
-    border: 1.5px solid var(--border);
-    background: var(--surface);
-    font-family: var(--ff-body);
-    font-weight: 600;
-    font-size: .8rem;
-    color: var(--ink-2);
-    cursor: pointer;
-    transition: all .15s;
-    box-shadow: var(--sh0);
-    white-space: nowrap;
-    flex-shrink: 0;
+    display: flex; align-items: center; gap: 5px;
+    padding: 6px 12px; border-radius: var(--r-sm);
+    border: 1.5px solid var(--border); background: var(--surface);
+    font-family: var(--ff-body); font-weight: 600; font-size: .78rem;
+    color: var(--ink-2); cursor: pointer; transition: all .12s;
+    box-shadow: var(--sh0); white-space: nowrap; flex-shrink: 0;
   }
   .back-btn:hover { border-color: var(--brand-mid); color: var(--brand); background: var(--brand-xlt); }
-  .back-btn svg { flex-shrink: 0; }
-
   .view-title {
-    font-family: var(--ff-display);
-    font-size: 1.35rem;
-    font-weight: 600;
-    color: var(--ink);
-    letter-spacing: -.01em;
-    line-height: 1.2;
+    font-family: var(--ff-display); font-size: 1.25rem;
+    font-weight: 600; color: var(--ink); letter-spacing: -.01em; line-height: 1.2;
   }
-  .title-emoji { margin-right: 6px; }
-
   .count-pill {
     margin-left: auto;
-    background: var(--brand-lt);
-    color: var(--brand);
-    border: 1px solid rgba(18,112,160,.2);
-    padding: 5px 13px;
-    border-radius: 20px;
-    font-weight: 700;
-    font-size: .75rem;
-    white-space: nowrap;
-    flex-shrink: 0;
+    background: var(--brand-lt); color: var(--brand);
+    border: 1px solid rgba(0,114,184,.15);
+    padding: 4px 12px; border-radius: 20px;
+    font-weight: 700; font-size: .72rem; white-space: nowrap; flex-shrink: 0;
   }
 
-  /* ─────────────────────── SUBSPECIALTY GRID ─────────────────────── */
+  /* ═══ SUBSPECIALTY GRID ═══ */
   .subspec-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
-    gap: 8px;
-    margin-bottom: 28px;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 8px; margin-bottom: 24px;
   }
   .subspec-card {
     background: var(--surface);
-    border: 1.5px solid var(--border);
-    border-radius: var(--r-sm);
-    padding: 12px 15px;
-    cursor: pointer;
-    font-weight: 600;
-    font-size: .86rem;
-    color: var(--ink-2);
-    transition: all .15s;
-    box-shadow: var(--sh0);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 8px;
+    border: 1.5px solid var(--border); border-radius: var(--r-sm);
+    padding: 10px 14px; cursor: pointer;
+    font-weight: 600; font-size: .82rem; color: var(--ink-2);
+    transition: all .12s; box-shadow: var(--sh0);
+    display: flex; align-items: center; justify-content: space-between; gap: 8px;
   }
-  .subspec-card:hover { border-color: var(--brand); color: var(--brand); background: var(--brand-xlt); box-shadow: var(--sh1); }
+  .subspec-card:hover { border-color: var(--brand); color: var(--brand); background: var(--brand-xlt); }
   .subspec-card.active { background: var(--brand); color: #fff; border-color: var(--brand); }
-  .subspec-arrow { opacity: .3; font-size: .8rem; transition: opacity .15s, transform .15s; }
-  .subspec-card:hover .subspec-arrow { opacity: .7; transform: translateX(2px); }
-  .subspec-card.active .subspec-arrow { opacity: .6; }
+  .subspec-count {
+    font-size: .66rem; font-weight: 700; color: var(--ink-4);
+    background: var(--surface-2); border-radius: 10px; padding: 1px 7px;
+  }
+  .subspec-card.active .subspec-count { background: rgba(255,255,255,.2); color: rgba(255,255,255,.8); }
 
-  .conditions-row { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 20px; }
-
-  /* ─────────────────────── SERVICE CARDS ─────────────────────── */
+  /* ═══ SERVICE CARDS ═══ */
   .provider-section {
     background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--r);
-    margin-bottom: 14px;
-    overflow: hidden;
-    box-shadow: var(--sh0);
-    transition: box-shadow .15s;
+    border: 1px solid var(--border); border-radius: var(--r);
+    margin-bottom: 12px; overflow: hidden; box-shadow: var(--sh0);
   }
-  .provider-section:hover { box-shadow: var(--sh1); }
-
   .provider-header {
-    padding: 12px 18px;
+    padding: 10px 16px;
     background: var(--surface-2);
     border-bottom: 1px solid var(--border-lt);
-    display: flex;
-    align-items: center;
-    gap: 10px;
+    display: flex; align-items: center; gap: 8px;
   }
-  .provider-icon { font-size: .95rem; opacity: .7; }
+  .provider-icon { font-size: .85rem; opacity: .65; }
   .provider-name {
-    font-family: var(--ff-display);
-    font-weight: 600;
-    font-size: .9rem;
-    color: var(--ink);
-    letter-spacing: -.01em;
+    font-family: var(--ff-display); font-weight: 600;
+    font-size: .85rem; color: var(--ink); letter-spacing: -.01em;
   }
   .provider-count {
-    margin-left: auto;
-    font-size: .68rem;
-    font-weight: 700;
-    color: var(--ink-3);
-    background: var(--border-lt);
-    padding: 2px 8px;
-    border-radius: 10px;
+    margin-left: auto; font-size: .65rem; font-weight: 700;
+    color: var(--ink-3); background: var(--border-lt);
+    padding: 2px 8px; border-radius: 10px;
   }
 
   .service-card {
-    padding: 16px 18px;
+    padding: 14px 16px;
     border-bottom: 1px solid var(--border-lt);
     display: grid;
     grid-template-columns: 1fr auto;
-    gap: 8px 16px;
-    align-items: start;
-    transition: background .12s;
+    gap: 6px 14px; align-items: start;
+    transition: background .1s;
   }
   .service-card:last-child { border-bottom: none; }
   .service-card:hover { background: var(--brand-xlt); }
 
+  .svc-main { grid-column: 1; min-width: 0; }
   .svc-title {
-    font-family: var(--ff-display);
-    font-weight: 600;
-    font-size: .95rem;
-    color: var(--ink);
-    margin-bottom: 3px;
-    line-height: 1.3;
-    letter-spacing: -.01em;
+    font-family: var(--ff-display); font-weight: 600;
+    font-size: .9rem; color: var(--ink); margin-bottom: 2px;
+    line-height: 1.3; letter-spacing: -.01em;
   }
   .svc-sub {
-    font-size: .76rem;
-    color: var(--ink-3);
-    margin-bottom: 9px;
-    font-weight: 500;
+    font-size: .73rem; color: var(--ink-3); margin-bottom: 8px; font-weight: 500;
   }
 
-  /* eRS pathway section */
   .ers-pathway-block {
     background: var(--brand-xlt);
-    border: 1px solid rgba(18,112,160,.15);
+    border: 1px solid rgba(0,114,184,.12);
     border-radius: var(--r-sm);
-    padding: 9px 12px;
-    margin-bottom: 10px;
+    padding: 8px 11px; margin-bottom: 8px;
   }
   .ers-pathway-label {
-    font-size: .64rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: .08em;
-    color: var(--brand-mid);
-    margin-bottom: 6px;
+    font-size: .62rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: .08em; color: var(--brand-mid); margin-bottom: 5px;
   }
-
-  .badge-row { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 8px; }
-  .badge {
-    padding: 3px 9px;
-    border-radius: 6px;
-    font-size: .68rem;
-    font-weight: 700;
-    letter-spacing: .01em;
-    white-space: nowrap;
-  }
-  /* pathway type chips — reuse .chip but smaller */
   .ers-pathway-block .chip {
-    font-size: .7rem;
-    padding: 3px 10px;
-    background: rgba(18,112,160,.08);
-    border-color: rgba(18,112,160,.2);
-    color: var(--brand);
+    font-size: .67rem; padding: 2px 8px;
+    background: rgba(0,114,184,.06); border-color: rgba(0,114,184,.15); color: var(--brand);
   }
-  .badge-blue   { background: var(--brand-lt); color: var(--brand); border: 1px solid rgba(18,112,160,.25); }
-  .badge-red    { background: var(--red-lt); color: var(--red); border: 1px solid rgba(192,24,46,.18); }
-  .badge-green  { background: var(--green-lt); color: var(--green); border: 1px solid rgba(10,112,72,.18); }
-  .badge-purple { background: var(--purple-lt); color: var(--purple); border: 1px solid rgba(91,33,182,.18); }
 
-  .svc-details { display: flex; flex-direction: column; gap: 5px; }
+  .badge-row { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 6px; }
+  .badge {
+    padding: 2px 8px; border-radius: 5px;
+    font-size: .65rem; font-weight: 700; letter-spacing: .01em; white-space: nowrap;
+  }
+  .badge-blue   { background: var(--brand-lt); color: var(--brand); border: 1px solid rgba(0,114,184,.2); }
+  .badge-red    { background: var(--red-lt); color: var(--red); border: 1px solid rgba(192,24,46,.15); }
+  .badge-green  { background: var(--green-lt); color: var(--green); border: 1px solid rgba(10,112,72,.15); }
+  .badge-amber  { background: var(--amber-lt); color: var(--amber); border: 1px solid rgba(180,83,9,.15); }
+  .badge-purple { background: var(--purple-lt); color: var(--purple); border: 1px solid rgba(91,33,182,.15); }
+
+  .svc-details { display: flex; flex-direction: column; gap: 4px; }
   .svc-detail-row {
-    font-size: .77rem;
-    color: var(--ink-2);
-    display: flex;
-    gap: 7px;
-    align-items: flex-start;
-    line-height: 1.45;
+    font-size: .74rem; color: var(--ink-2);
+    display: flex; gap: 6px; align-items: flex-start; line-height: 1.45;
   }
   .svc-detail-label {
-    font-weight: 700;
-    color: var(--ink-3);
-    min-width: 44px;
-    flex-shrink: 0;
-    font-size: .7rem;
-    text-transform: uppercase;
-    letter-spacing: .04em;
-    padding-top: 1px;
+    font-weight: 700; color: var(--ink-3); min-width: 42px; flex-shrink: 0;
+    font-size: .66rem; text-transform: uppercase; letter-spacing: .04em; padding-top: 1px;
   }
+  .svc-detail-row a { color: var(--brand-mid); text-decoration: none; }
+  .svc-detail-row a:hover { text-decoration: underline; }
+
   .svc-notes {
-    font-size: .77rem;
-    color: var(--ink-2);
-    background: var(--amber-lt);
-    border: 1px solid #FDE68A;
-    border-radius: var(--r-sm);
-    padding: 8px 11px;
-    margin-top: 8px;
-    line-height: 1.5;
+    font-size: .74rem; color: var(--ink-2);
+    background: var(--amber-lt); border: 1px solid #FDE68A;
+    border-radius: var(--r-sm); padding: 7px 10px;
+    margin-top: 6px; line-height: 1.5;
   }
 
   .svc-meta-col {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 6px;
-    padding-top: 3px;
+    display: flex; flex-direction: column;
+    align-items: flex-end; gap: 5px; padding-top: 2px;
   }
   .age-badge {
-    font-size: .68rem;
-    font-weight: 700;
-    color: var(--ink-3);
-    background: var(--surface-2);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    padding: 3px 8px;
-    white-space: nowrap;
+    font-size: .65rem; font-weight: 700; color: var(--ink-3);
+    background: var(--surface-2); border: 1px solid var(--border);
+    border-radius: 5px; padding: 2px 7px; white-space: nowrap;
   }
-
-  /* ─────────────────────── USC PANEL ─────────────────────── */
-  #panel-usc .search-header { margin-bottom: 22px; }
-
-  /* ─────────────────────── EMPTY / LOADING ─────────────────────── */
-  .empty-state {
-    text-align: center;
-    padding: 64px 20px;
-    color: var(--ink-3);
+  .priority-badges { display: flex; gap: 3px; }
+  .priority-dot {
+    width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0;
   }
-  .empty-state .big { font-size: 2.8rem; margin-bottom: 12px; }
-  .empty-state p { font-size: .9rem; }
+  .priority-dot.routine { background: var(--green); }
+  .priority-dot.urgent { background: var(--amber); }
+  .priority-dot.tww { background: var(--red); }
 
+  /* ═══ EMPTY / LOADING ═══ */
+  .empty-state { text-align: center; padding: 52px 20px; color: var(--ink-3); }
+  .empty-state .big { font-size: 2.5rem; margin-bottom: 10px; }
+  .empty-state p { font-size: .88rem; }
   .loading {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    padding: 64px;
-    color: var(--ink-3);
-    font-weight: 600;
-    font-size: .9rem;
+    display: flex; align-items: center; justify-content: center;
+    gap: 10px; padding: 52px; color: var(--ink-3); font-weight: 600; font-size: .88rem;
   }
   .spinner {
-    width: 18px; height: 18px;
-    border: 2px solid var(--border);
-    border-top-color: var(--brand);
-    border-radius: 50%;
-    animation: spin .7s linear infinite;
+    width: 16px; height: 16px;
+    border: 2px solid var(--border); border-top-color: var(--brand);
+    border-radius: 50%; animation: spin .6s linear infinite;
   }
   @keyframes spin { to { transform: rotate(360deg); } }
 
-  /* ─────────────────────── RESPONSIVE ─────────────────────── */
-  @media (max-width: 600px) {
-    .wrap { padding: 16px 14px 50px; }
-    .category-grid { grid-template-columns: repeat(2, 1fr); gap: 9px; }
-    .site-header { padding: 0 16px; }
-    .logo-text { font-size: .92rem; }
-    .filter-row { gap: 5px; }
-    .age-slider-wrap { margin-left: 0; margin-top: 8px; width: 100%; }
-    .view-title { font-size: 1.1rem; }
+  /* ═══ USC PANEL ═══ */
+  .usc-banner {
+    background: linear-gradient(135deg, #7C1D1D, #991B1B);
+    color: #fff; border-radius: var(--r);
+    padding: 14px 18px; margin-bottom: 20px;
+    display: flex; align-items: center; gap: 10px;
+    font-size: .82rem; font-weight: 500;
+  }
+  .usc-banner strong { font-weight: 700; }
+
+  /* ═══ RESPONSIVE ═══ */
+  @media (max-width: 700px) {
+    .wrap { padding: 16px 12px 48px; }
+    .category-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+    .site-header { padding: 0 14px; gap: 10px; }
+    .logo-text { font-size: .88rem; }
+    .logo-sub { display: none; }
+    .stat-pill { display: none; }
+    .filter-row { gap: 4px; }
+    .age-slider-wrap { margin-left: 0; margin-top: 6px; width: 100%; }
+    .view-title { font-size: 1.05rem; }
+    .tab-btn { padding: 5px 12px; font-size: .72rem; }
+    .subspec-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
+    .service-card { grid-template-columns: 1fr; }
+    .svc-meta-col { flex-direction: row; align-items: center; padding-top: 0; }
+  }
+  @media (max-width: 400px) {
+    .category-grid { grid-template-columns: 1fr 1fr; gap: 6px; }
+    .category-card { padding: 12px 10px 10px; }
+    .cat-title { font-size: .8rem; }
   }
   </style>
 </head>
 <body>
 
-  <header class='site-header'>
-    <a class='site-logo' href='#'>
-      <div class='logo-mark'>ICB</div>
+  <header class="site-header">
+    <a class="site-logo" href="#">
+      <div class="logo-mark">NHS</div>
       <div>
-        <div class='logo-text'>Surrey Referral Pathways</div>
-        <div class='logo-sub'>Integrated Care Board</div>
+        <div class="logo-text">Surrey Referral Pathways</div>
+        <div class="logo-sub">Integrated Care Board</div>
       </div>
     </a>
-    <nav class='tabs' role='tablist'>
-      <button id='tab-ur'  class='tab-btn' role='tab' aria-selected='true'  aria-controls='panel-ur' >Routine &amp; Urgent</button>
-      <button id='tab-usc' class='tab-btn' role='tab' aria-selected='false' aria-controls='panel-usc'>USC / 2WW</button>
-    </nav>
+    <div class="header-right">
+      <span class="stat-pill" id="stat-pill"></span>
+      <nav class="tabs" role="tablist">
+        <button id="tab-ur"  class="tab-btn" role="tab" aria-selected="true"  aria-controls="panel-ur">Routine &amp; Urgent</button>
+        <button id="tab-usc" class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-usc">USC / 2WW</button>
+      </nav>
+    </div>
   </header>
 
-  <main class='wrap'>
+  <main class="wrap">
 
-    <!-- ══════════════ ROUTINE & URGENT ══════════════ -->
-    <section id='panel-ur' class='view active' aria-labelledby='tab-ur'>
+    <!-- ══════ ROUTINE & URGENT ══════ -->
+    <section id="panel-ur" aria-labelledby="tab-ur">
 
-      <!-- HOME: search + filters + grid -->
-      <div id='home-view' class='view active'>
-        <div class='search-header'>
-          <div class='search-row'>
-            <span class='search-icon'>
-              <svg width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.3' stroke-linecap='round' stroke-linejoin='round'>
-                <circle cx='11' cy='11' r='8'/><path d='m21 21-4.35-4.35'/>
+      <div id="home-view">
+        <div class="search-header">
+          <div class="search-row">
+            <span class="search-icon">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
               </svg>
             </span>
-            <input id='global-search' type='text' autocomplete='off' placeholder='Search service, specialty, condition, provider or site…'/>
+            <input class="search-input" id="global-search" type="text" autocomplete="off" placeholder="Search service, specialty, condition, provider or site…"/>
+            <button class="search-clear" id="global-search-clear" title="Clear">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+            </button>
           </div>
-          <div id='search-results'></div>
+          <div class="search-results" id="search-results"></div>
 
-          <div class='filter-row'>
-            <span class='filter-label'>Area</span>
-            <div id='ur-region' style='display:contents'>
-              <button class='chip active' data-area=''>All</button>
-              <button class='chip' data-area='NW Surrey'>NW Surrey</button>
-              <button class='chip' data-area='East Surrey'>East Surrey</button>
-              <button class='chip' data-area='Surrey Downs'>Surrey Downs</button>
-              <button class='chip' data-area='Guildford &amp; Waverley'>Guildford &amp; Waverley</button>
-              <button class='chip' data-area='East Elmbridge'>East Elmbridge</button>
+          <div class="filter-row">
+            <span class="filter-label">Area</span>
+            <div id="ur-region" style="display:contents">
+              <button class="chip active" data-area="">All</button>
+              <button class="chip" data-area="NW Surrey">NW Surrey</button>
+              <button class="chip" data-area="East Surrey">East Surrey</button>
+              <button class="chip" data-area="Surrey Downs">Surrey Downs</button>
+              <button class="chip" data-area="Guildford &amp; Waverley">Guildford &amp; Waverley</button>
+              <button class="chip" data-area="East Elmbridge">East Elmbridge</button>
             </div>
-            <div class='filter-divider'></div>
-            <span class='filter-label'>Age</span>
-            <button class='age-chip chip active' data-age='all'>All</button>
-            <button class='age-chip chip' data-age='adult'>Adult</button>
-            <button class='age-chip chip' data-age='paeds'>Paeds</button>
-            <div class='age-slider-wrap'>
-              <input id='age-slider' type='range' min='0' max='120' value='0' step='1'/>
-              <span id='age-slider-value'>0+</span>
+            <div class="filter-divider"></div>
+            <div class="age-group">
+              <span class="filter-label">Age</span>
+              <button class="chip age-chip active" data-age="all">All</button>
+              <button class="chip age-chip" data-age="adult">Adult</button>
+              <button class="chip age-chip" data-age="paeds">Paeds</button>
+              <div class="age-slider-wrap">
+                <input id="age-slider" type="range" min="0" max="120" value="0" step="1"/>
+                <span class="age-val" id="age-slider-value">Any</span>
+              </div>
             </div>
           </div>
         </div>
 
-        <div class='section-label'>Browse by clinical area</div>
-        <div id='category-grid' class='category-grid'>
-          <div class='loading'><div class='spinner'></div> Loading services…</div>
+        <div class="section-label">Browse by clinical area</div>
+        <div id="category-grid" class="category-grid">
+          <div class="loading" style="grid-column:1/-1"><div class="spinner"></div> Loading services…</div>
         </div>
       </div>
 
-      <!-- CATEGORY: subspecialties -->
-      <div id='category-view' class='view'>
-        <div class='view-header'>
-          <button class='back-btn' id='back-to-home'>
-            <svg width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><path d='M19 12H5'/><path d='m12 19-7-7 7-7'/></svg>
+      <div id="category-view" style="display:none">
+        <div class="view-header">
+          <button class="back-btn" id="back-to-home">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>
             Back
           </button>
-          <div class='view-title' id='cat-view-title'></div>
+          <div class="view-title" id="cat-view-title"></div>
+          <div class="count-pill" id="cat-count"></div>
         </div>
-        <div class='section-label'>Sub-specialties</div>
-        <div id='subspec-grid' class='subspec-grid'></div>
+        <div class="section-label">Sub-specialties</div>
+        <div id="subspec-grid" class="subspec-grid"></div>
       </div>
 
-      <!-- RESULTS: service cards -->
-      <div id='results-view' class='view'>
-        <div class='view-header'>
-          <button class='back-btn' id='back-to-cat'>
-            <svg width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><path d='M19 12H5'/><path d='m12 19-7-7 7-7'/></svg>
+      <div id="results-view" style="display:none">
+        <div class="view-header">
+          <button class="back-btn" id="back-to-cat">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>
             Back
           </button>
-          <div class='view-title' id='results-title'></div>
-          <div class='count-pill' id='results-count'></div>
+          <div class="view-title" id="results-title"></div>
+          <div class="count-pill" id="results-count"></div>
         </div>
-        <div class='conditions-row' id='condition-list'></div>
-        <div id='results-body'></div>
+        <div id="results-body"></div>
       </div>
 
     </section>
 
-    <!-- ══════════════ USC / 2WW ══════════════ -->
-    <section id='panel-usc' class='view' aria-labelledby='tab-usc'>
-      <div class='search-header'>
-        <div class='search-row'>
-          <span class='search-icon'>
-            <svg width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.3' stroke-linecap='round' stroke-linejoin='round'>
-              <circle cx='11' cy='11' r='8'/><path d='m21 21-4.35-4.35'/>
+    <!-- ══════ USC / 2WW ══════ -->
+    <section id="panel-usc" style="display:none" aria-labelledby="tab-usc">
+      <div class="search-header">
+        <div class="search-row">
+          <span class="search-icon">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
             </svg>
           </span>
-          <input id='usc-search' type='text' autocomplete='off' placeholder='Search USC cancer type, provider or service…'/>
+          <input class="search-input" id="usc-search" type="text" autocomplete="off" placeholder="Search USC cancer type, provider or pathway…"/>
+          <button class="search-clear" id="usc-search-clear" title="Clear">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+          </button>
         </div>
-        <div id='usc-search-results'></div>
-        <div class='filter-row'>
-          <span class='filter-label'>Area</span>
-          <div id='usc-region' style='display:contents'>
-            <button class='chip active' data-area=''>All</button>
-            <button class='chip' data-area='NW Surrey'>NW Surrey</button>
-            <button class='chip' data-area='East Surrey'>East Surrey</button>
-            <button class='chip' data-area='Surrey Downs'>Surrey Downs</button>
-            <button class='chip' data-area='Guildford &amp; Waverley'>Guildford &amp; Waverley</button>
-            <button class='chip' data-area='East Elmbridge'>East Elmbridge</button>
+        <div class="search-results" id="usc-search-results"></div>
+        <div class="filter-row">
+          <span class="filter-label">Area</span>
+          <div id="usc-region" style="display:contents">
+            <button class="chip active" data-area="">All</button>
+            <button class="chip" data-area="NW Surrey">NW Surrey</button>
+            <button class="chip" data-area="East Surrey">East Surrey</button>
+            <button class="chip" data-area="Surrey Downs">Surrey Downs</button>
+            <button class="chip" data-area="Guildford &amp; Waverley">Guildford &amp; Waverley</button>
+            <button class="chip" data-area="East Elmbridge">East Elmbridge</button>
           </div>
         </div>
       </div>
-      <div class='section-label' style='margin-top:4px'>USC cancer pathways</div>
-      <div id='usc-grid' class='category-grid'></div>
-      <div id='usc-results' style='margin-top:20px'></div>
+      <div class="usc-banner">
+        <span style="font-size:1.2rem">⚠️</span>
+        <div><strong>Urgent Suspected Cancer / 2-Week Wait pathways.</strong> These are time-critical referral routes.</div>
+      </div>
+      <div class="section-label">USC &amp; Oncology Pathways</div>
+      <div id="usc-grid" class="category-grid"></div>
+      <div id="usc-results" style="margin-top:18px"></div>
     </section>
 
   </main>
 
-  <script src='hybrid-loader.js'></script>
-  <!-- Data source: master_normalised_v2.json via GitHub raw URL in hybrid-loader.js -->
+  <script>
+/* ═══════════════════════════════════════════════════════════
+   Surrey Referral Pathways — App Logic
+   ═══════════════════════════════════════════════════════════ */
+
+const DATA_URL = "./master_normalised_v2.json";
+
+let DATA = null, INDEX = [];
+
+/* ─── DOM helpers ─── */
+const $ = q => document.querySelector(q);
+const $id = id => document.getElementById(id);
+const mk = (t, cls) => { const e = document.createElement(t); if (cls) e.className = cls; return e; };
+
+/* ─── State ─── */
+let state = {
+  area: '', age: 'all', ageSlider: 0,
+  activeTab: 'ur', activeView: 'home',
+  activeCat: null, activeSub: null,
+};
+
+/* ═══ DATA LOADING ═══ */
+async function loadData() {
+  try {
+    const res = await fetch(DATA_URL);
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    DATA = await res.json();
+    buildIndex(DATA);
+    updateStats();
+    render();
+  } catch (err) {
+    $id('category-grid').innerHTML = `
+      <div class="empty-state" style="grid-column:1/-1">
+        <div class="big">⚠️</div>
+        <p>Could not load service data.<br>
+        <small style="color:var(--ink-3)">${err.message}</small></p>
+      </div>`;
+  }
+}
+
+function buildIndex(data) {
+  INDEX.length = 0;
+  for (const [topic, sub_dict] of Object.entries(data)) {
+    for (const [cond, svcs] of Object.entries(sub_dict)) {
+      if (!Array.isArray(svcs)) continue;
+      for (const s of svcs) {
+        INDEX.push({ ...s, _topic: topic, _cond: cond });
+      }
+    }
+  }
+}
+
+function updateStats() {
+  const ur = INDEX.filter(r => !r.usc).length;
+  const usc = INDEX.filter(r => r.usc).length;
+  $id('stat-pill').textContent = `${ur} U&R · ${usc} USC pathways`;
+}
+
+/* ═══ FILTERING ═══ */
+function matchArea(rec) {
+  if (!state.area) return true;
+  const r = (rec.region || '').trim();
+  return r === state.area || r === '' || r === 'All';
+}
+
+function matchAge(rec) {
+  if (state.age === 'all' && state.ageSlider === 0) return true;
+  const mn = rec.ageMin ?? 0;
+  const mx = rec.ageMax ?? 999;
+  if (state.ageSlider > 0) return mn <= state.ageSlider && mx >= state.ageSlider;
+  if (state.age === 'adult') return mx >= 18;
+  if (state.age === 'paeds') return mn < 18;
+  return true;
+}
+
+/* ═══ CATEGORY METADATA ═══ */
+const CAT_META = {
+  'Allergy & Immunology':       { emoji:'🤧', color:'#0B7A6E' },
+  'Breast Surgery':             { emoji:'🎗️', color:'#C0396E' },
+  'Cancer Pathways':            { emoji:'🔴', color:'#991B1B' },
+  'Cardiology':                 { emoji:'❤️', color:'#C0182E' },
+  'Dentistry & Oral Surgery':   { emoji:'🦷', color:'#0B6FA4' },
+  'Dermatology':                { emoji:'🩺', color:'#B45309' },
+  'Diagnostic Services':        { emoji:'🔬', color:'#5B21B6' },
+  'Dietetics & Nutrition':      { emoji:'🥗', color:'#0A7048' },
+  'ENT & Audiology':            { emoji:'👂', color:'#0B4F6C' },
+  'Endocrinology & Metabolic':  { emoji:'⚗️', color:'#B45309' },
+  'Gastroenterology':           { emoji:'🫁', color:'#2D6A4F' },
+  'General Medicine':           { emoji:'🏥', color:'#4A5568' },
+  'General Surgery':            { emoji:'🔪', color:'#6B3A2A' },
+  'Genetics':                   { emoji:'🧬', color:'#5B21B6' },
+  'Geriatrics & Elderly Care':  { emoji:'🌿', color:'#374151' },
+  'Gynaecology & Obstetrics':   { emoji:'🌸', color:'#BE185D' },
+  'Haematology':                { emoji:'🩸', color:'#991B1B' },
+  'Infectious Diseases':        { emoji:'🦠', color:'#065F46' },
+  'MSK & Orthopaedics':         { emoji:'🦴', color:'#1D4ED8' },
+  'Mental Health':              { emoji:'🧠', color:'#4C1D95' },
+  'Nephrology':                 { emoji:'💧', color:'#0369A1' },
+  'Neurology':                  { emoji:'⚡', color:'#6D28D9' },
+  'Ophthalmology':              { emoji:'👁️', color:'#0B4F6C' },
+  'Paediatrics':                { emoji:'👶', color:'#047857' },
+  'Pain Management':            { emoji:'💊', color:'#92400E' },
+  'Physiotherapy':              { emoji:'🏃', color:'#065F46' },
+  'Plastics & Burns':           { emoji:'🩹', color:'#B45309' },
+  'Renal & Urology':            { emoji:'💧', color:'#1E40AF' },
+  'Respiratory':                { emoji:'🫀', color:'#0B6FA4' },
+  'Rheumatology':               { emoji:'🦿', color:'#7C3AED' },
+  'Speech & Language Therapy':   { emoji:'💬', color:'#0B4F6C' },
+  'Vascular Surgery':           { emoji:'🩻', color:'#B91C1C' },
+};
+
+function catMeta(cat) { return CAT_META[cat] || { emoji:'🏥', color:'#4A5568' }; }
+
+/* ═══ DATA QUERIES ═══ */
+function getCategories(isUsc) {
+  const cats = new Map();
+  for (const rec of INDEX) {
+    if (isUsc !== !!rec.usc) continue;
+    if (!matchArea(rec) || !matchAge(rec)) continue;
+    const c = rec.displayCategory || rec._topic;
+    cats.set(c, (cats.get(c) || 0) + 1);
+  }
+  return [...cats.entries()].sort((a, b) => a[0].localeCompare(b[0]));
+}
+
+function getSpecialties(cat) {
+  const specs = new Map();
+  for (const rec of INDEX) {
+    if ((rec.displayCategory || rec._topic) !== cat) continue;
+    if (!matchArea(rec) || !matchAge(rec)) continue;
+    if (rec.usc) continue;
+    const sp = rec.displaySpecialty || rec._cond;
+    specs.set(sp, (specs.get(sp) || 0) + 1);
+  }
+  return [...specs.entries()].sort((a, b) => a[0].localeCompare(b[0]));
+}
+
+function getRecords(cat, spec, isUsc) {
+  return INDEX.filter(rec => {
+    if (isUsc !== undefined && isUsc !== !!rec.usc) return false;
+    const dc = rec.displayCategory || rec._topic;
+    const ds = rec.displaySpecialty || rec._cond;
+    if (dc !== cat) return false;
+    if (spec && ds !== spec) return false;
+    return matchArea(rec) && matchAge(rec);
+  });
+}
+
+/* ═══ CARD BUILDERS ═══ */
+function ersBlock(s) {
+  const spec = (s.ersSpecialty || '').trim() || null;
+  const types = Array.isArray(s.clinicTypes) && s.clinicTypes.length ? s.clinicTypes : null;
+  if (!spec && !types) return '';
+  const pills = types ? types.map(p => `<span class="chip">${p}</span>`).join('') : '';
+  return `<div class="ers-pathway-block">
+    <div class="ers-pathway-label">eRS Pathway${spec ? ' — ' + spec : ''}</div>
+    ${pills ? `<div class="badge-row" style="margin-bottom:0">${pills}</div>` : ''}
+  </div>`;
+}
+
+function badges(s) {
+  const p = [];
+  if (s.method) p.push(`<span class="badge badge-blue">${s.method}</span>`);
+  if (s.bookable) p.push(`<span class="badge badge-green">Bookable</span>`);
+  if (s.triageAccepted) p.push(`<span class="badge badge-purple">Triage</span>`);
+  if (s.usc) p.push(`<span class="badge badge-red">USC / 2WW</span>`);
+  if (s.emisForm) p.push(`<span class="badge badge-amber">EMIS Form</span>`);
+  return p.join('');
+}
+
+function ageStr(s) {
+  const mn = s.ageMin, mx = s.ageMax;
+  if (mn != null && mx != null) return `${mn}–${mx}`;
+  if (mn != null && mn > 0) return `${mn}+`;
+  if (mx != null) return `0–${mx}`;
+  return 'All ages';
+}
+
+function priorityDots(s) {
+  const dots = [];
+  if (s.routine) dots.push('<span class="priority-dot routine" title="Routine"></span>');
+  if (s.urgent) dots.push('<span class="priority-dot urgent" title="Urgent"></span>');
+  if (s.tww) dots.push('<span class="priority-dot tww" title="2WW"></span>');
+  return dots.length ? `<div class="priority-badges">${dots.join('')}</div>` : '';
+}
+
+function buildServiceCard(s) {
+  const d = mk('div', 'service-card');
+  const details = [];
+  if (s.sites && s.sites.length)
+    details.push(`<div class="svc-detail-row"><span class="svc-detail-label">Sites</span><span>${s.sites.join(', ')}</span></div>`);
+  if (s.email)
+    details.push(`<div class="svc-detail-row"><span class="svc-detail-label">Email</span><span><a href="mailto:${s.email}">${s.email}</a></span></div>`);
+  if (s.phone)
+    details.push(`<div class="svc-detail-row"><span class="svc-detail-label">Phone</span><span>${s.phone}</span></div>`);
+  if (s.criteria)
+    details.push(`<div class="svc-detail-row"><span class="svc-detail-label">Criteria</span><span>${s.criteria}</span></div>`);
+
+  const b = badges(s);
+  d.innerHTML = `
+    <div class="svc-main">
+      <div class="svc-title">${s.serviceName || '—'}</div>
+      <div class="svc-sub">${[s.provider, s.region || null, s.patientGroup || null].filter(Boolean).join(' · ')}</div>
+      ${ersBlock(s)}
+      ${b ? `<div class="badge-row">${b}</div>` : ''}
+      <div class="svc-details">${details.join('')}</div>
+      ${s.notes ? `<div class="svc-notes">📋 ${s.notes}</div>` : ''}
+    </div>
+    <div class="svc-meta-col">
+      <span class="age-badge">${ageStr(s)}</span>
+      ${priorityDots(s)}
+    </div>`;
+  return d;
+}
+
+function renderServiceList(records, container) {
+  container.innerHTML = '';
+  if (!records.length) {
+    container.innerHTML = `<div class="empty-state"><div class="big">🔍</div><p>No services match the current filters.</p></div>`;
+    return;
+  }
+  const byProv = new Map();
+  for (const rec of records) {
+    const p = rec.provider || 'Other';
+    if (!byProv.has(p)) byProv.set(p, []);
+    byProv.get(p).push(rec);
+  }
+  for (const [prov, recs] of [...byProv.entries()].sort((a, b) => a[0].localeCompare(b[0]))) {
+    const sec = mk('div', 'provider-section');
+    sec.innerHTML = `<div class="provider-header">
+      <span class="provider-icon">🏥</span>
+      <span class="provider-name">${prov}</span>
+      <span class="provider-count">${recs.length}</span>
+    </div>`;
+    for (const rec of recs) sec.appendChild(buildServiceCard(rec));
+    container.appendChild(sec);
+  }
+}
+
+/* ═══ VIEW MANAGEMENT ═══ */
+function showView(name) {
+  ['home-view', 'category-view', 'results-view'].forEach(id => {
+    const v = $id(id);
+    if (!v) return;
+    const show = id === `${name}-view`;
+    v.style.display = show ? '' : 'none';
+    if (show) v.classList.add('view-anim');
+  });
+  state.activeView = name;
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function renderHome() {
+  showView('home');
+  const grid = $id('category-grid');
+  grid.innerHTML = '';
+  const cats = getCategories(false);
+  if (!cats.length) {
+    grid.innerHTML = `<div class="empty-state" style="grid-column:1/-1"><div class="big">🔍</div><p>No services match the current filters.</p></div>`;
+    return;
+  }
+  for (const [cat, count] of cats) {
+    const meta = catMeta(cat);
+    const card = mk('div', 'category-card');
+    card.style.setProperty('--cat-color', meta.color);
+    card.innerHTML = `
+      <span class="cat-emoji">${meta.emoji}</span>
+      <div>
+        <div class="cat-title">${cat}</div>
+        <div class="cat-count">${count} service${count !== 1 ? 's' : ''}</div>
+      </div>`;
+    card.addEventListener('click', () => openCategory(cat));
+    grid.appendChild(card);
+  }
+}
+
+function openCategory(cat) {
+  state.activeCat = cat;
+  state.activeSub = null;
+  const meta = catMeta(cat);
+  $id('cat-view-title').innerHTML = `<span style="margin-right:6px">${meta.emoji}</span>${cat}`;
+
+  const specs = getSpecialties(cat);
+  const total = specs.reduce((s, [, c]) => s + c, 0);
+  $id('cat-count').textContent = `${total} service${total !== 1 ? 's' : ''}`;
+
+  const grid = $id('subspec-grid');
+  grid.innerHTML = '';
+
+  if (specs.length === 1) {
+    // Skip subspecialty view if only one
+    openResults(cat, specs[0][0]);
+    return;
+  }
+
+  for (const [spec, count] of specs) {
+    const card = mk('div', 'subspec-card');
+    card.dataset.spec = spec;
+    card.innerHTML = `<span>${spec}</span><span class="subspec-count">${count}</span>`;
+    card.addEventListener('click', () => openResults(cat, spec));
+    grid.appendChild(card);
+  }
+  showView('category');
+}
+
+function openResults(cat, spec) {
+  state.activeSub = spec;
+  document.querySelectorAll('.subspec-card').forEach(c =>
+    c.classList.toggle('active', c.dataset.spec === spec)
+  );
+  const meta = catMeta(cat);
+  $id('results-title').innerHTML = `<span style="margin-right:6px">${meta.emoji}</span>${spec}`;
+
+  const records = getRecords(cat, spec, false);
+  $id('results-count').textContent = `${records.length} service${records.length !== 1 ? 's' : ''}`;
+  renderServiceList(records, $id('results-body'));
+  showView('results');
+}
+
+/* ═══ SEARCH ═══ */
+function runSearch(query, resultsEl, isUsc) {
+  resultsEl.innerHTML = '';
+  const q = query.trim().toLowerCase();
+  if (q.length < 2) return;
+
+  const hits = INDEX.filter(rec => {
+    if (isUsc && !rec.usc) return false;
+    if (!isUsc && rec.usc) return false;
+    const hay = [
+      rec.serviceName, rec.provider, rec.displayCategory, rec.displaySpecialty,
+      rec.displaySubtype, rec.ersSpecialty, rec.region, rec.uscTopic,
+      ...(rec.sites || []), ...(rec.clinicTypes || []),
+      rec.criteria, rec.notes, rec.ersServiceName
+    ].filter(Boolean).join(' ').toLowerCase();
+    return hay.includes(q);
+  }).slice(0, 15);
+
+  for (const rec of hits) {
+    const div = mk('div', 'search-hit');
+    const cat = rec.displayCategory || rec._topic;
+    const spec = rec.displaySpecialty || rec._cond;
+    div.innerHTML = `
+      <div class="search-hit-title">${rec.serviceName || '—'}</div>
+      <div class="search-hit-path">${cat} › ${spec}${rec.displaySubtype ? ' › ' + rec.displaySubtype : ''} · ${rec.provider || ''} ${rec.region ? '· ' + rec.region : ''}</div>`;
+    div.addEventListener('click', () => {
+      resultsEl.innerHTML = '';
+      if (!isUsc) {
+        state.activeCat = cat;
+        openCategory(cat);
+        openResults(cat, spec);
+        $id('global-search').value = '';
+        $id('global-search-clear').classList.remove('visible');
+      }
+    });
+    resultsEl.appendChild(div);
+  }
+}
+
+/* ═══ USC PANEL ═══ */
+function renderUsc() {
+  const grid = $id('usc-grid');
+  const body = $id('usc-results');
+  grid.innerHTML = '';
+  body.innerHTML = '';
+
+  const cats = getCategories(true);
+  if (!cats.length) {
+    grid.innerHTML = `<div class="empty-state" style="grid-column:1/-1"><div class="big">🔍</div><p>No USC pathways match the current filters.</p></div>`;
+    return;
+  }
+
+  for (const [cat, count] of cats) {
+    const meta = catMeta(cat);
+    const card = mk('div', 'category-card');
+    card.style.setProperty('--cat-color', meta.color);
+    card.innerHTML = `
+      <span class="cat-emoji">${meta.emoji}</span>
+      <div>
+        <div class="cat-title">${cat}</div>
+        <div class="cat-count">${count} pathway${count !== 1 ? 's' : ''}</div>
+      </div>`;
+    card.addEventListener('click', () => {
+      document.querySelectorAll('#usc-grid .category-card').forEach(c => c.classList.remove('active'));
+      card.classList.add('active');
+      const recs = getRecords(cat, null, true);
+      renderServiceList(recs, body);
+      body.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+    grid.appendChild(card);
+  }
+}
+
+/* ═══ TAB SWITCHING ═══ */
+function switchTab(tab) {
+  state.activeTab = tab;
+  ['ur', 'usc'].forEach(t => {
+    $id(`tab-${t}`).setAttribute('aria-selected', t === tab ? 'true' : 'false');
+    $id(`panel-${t}`).style.display = t === tab ? '' : 'none';
+  });
+  if (tab === 'usc') renderUsc();
+}
+
+/* ═══ MAIN RENDER ═══ */
+function render() {
+  if (!DATA) return;
+  if (state.activeTab === 'usc') { renderUsc(); return; }
+  if (state.activeView === 'home' || !state.activeCat) {
+    renderHome();
+  } else if (state.activeView === 'category') {
+    openCategory(state.activeCat);
+  } else if (state.activeView === 'results') {
+    openResults(state.activeCat, state.activeSub);
+  }
+}
+
+/* ═══ EVENT WIRING ═══ */
+window.addEventListener('DOMContentLoaded', async () => {
+
+  /* Tabs */
+  $id('tab-ur').addEventListener('click', () => switchTab('ur'));
+  $id('tab-usc').addEventListener('click', () => switchTab('usc'));
+
+  /* Area chips — sync between panels */
+  document.querySelectorAll('[data-area]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      // Deactivate siblings in same region group
+      const row = btn.closest('#ur-region, #usc-region');
+      if (row) row.querySelectorAll('[data-area]').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      // Sync other panel
+      const area = btn.dataset.area;
+      state.area = area;
+      document.querySelectorAll(`[data-area="${area}"]`).forEach(b => {
+        const otherRow = b.closest('#ur-region, #usc-region');
+        if (otherRow && otherRow !== row) {
+          otherRow.querySelectorAll('[data-area]').forEach(x => x.classList.remove('active'));
+          b.classList.add('active');
+        }
+      });
+      render();
+    });
+  });
+
+  /* Age chips */
+  document.querySelectorAll('.age-chip').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.age-chip').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      state.age = btn.dataset.age;
+      state.ageSlider = 0;
+      $id('age-slider').value = 0;
+      $id('age-slider-value').textContent = 'Any';
+      render();
+    });
+  });
+
+  /* Age slider */
+  $id('age-slider').addEventListener('input', e => {
+    const v = parseInt(e.target.value, 10);
+    $id('age-slider-value').textContent = v === 0 ? 'Any' : `${v}`;
+    state.ageSlider = v;
+    if (v > 0) {
+      document.querySelectorAll('.age-chip').forEach(b => b.classList.remove('active'));
+      state.age = 'all';
+    }
+    render();
+  });
+
+  /* Search — UR */
+  const sInput = $id('global-search');
+  const sResult = $id('search-results');
+  const sClear = $id('global-search-clear');
+  sInput.addEventListener('input', () => {
+    runSearch(sInput.value, sResult, false);
+    sClear.classList.toggle('visible', sInput.value.length > 0);
+  });
+  sInput.addEventListener('keydown', e => { if (e.key === 'Escape') { sInput.value = ''; sResult.innerHTML = ''; sClear.classList.remove('visible'); } });
+  sClear.addEventListener('click', () => { sInput.value = ''; sResult.innerHTML = ''; sClear.classList.remove('visible'); sInput.focus(); });
+  document.addEventListener('click', e => {
+    if (!sInput.contains(e.target) && !sResult.contains(e.target)) sResult.innerHTML = '';
+  });
+
+  /* Search — USC */
+  const uInput = $id('usc-search');
+  const uResult = $id('usc-search-results');
+  const uClear = $id('usc-search-clear');
+  uInput.addEventListener('input', () => {
+    runSearch(uInput.value, uResult, true);
+    uClear.classList.toggle('visible', uInput.value.length > 0);
+  });
+  uInput.addEventListener('keydown', e => { if (e.key === 'Escape') { uInput.value = ''; uResult.innerHTML = ''; uClear.classList.remove('visible'); } });
+  uClear.addEventListener('click', () => { uInput.value = ''; uResult.innerHTML = ''; uClear.classList.remove('visible'); uInput.focus(); });
+  document.addEventListener('click', e => {
+    if (!uInput.contains(e.target) && !uResult.contains(e.target)) uResult.innerHTML = '';
+  });
+
+  /* Back buttons */
+  $id('back-to-home').addEventListener('click', () => {
+    state.activeCat = null;
+    state.activeSub = null;
+    renderHome();
+  });
+  $id('back-to-cat').addEventListener('click', () => {
+    openCategory(state.activeCat);
+  });
+
+  /* Load */
+  await loadData();
+});
+  </script>
 </body>
 </html>
